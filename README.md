@@ -17,6 +17,7 @@ Azure OpenAI Service: You need an active Azure OpenAI Service instance, an API K
 Create Environment File:Create a file named .env in the same directory as the script to store your Azure credentials:Ini, TOML# .env file
 API_ENDPOINT="YOUR_AZURE_OPENAI_ENDPOINT_HERE"
 API_KEY="YOUR_AZURE_OPENAI_API_KEY_HERE"
+
 Replace the placeholders with your actual values.Create FAQ Data File:Create a file named bank_faq.txt in the same directory. This file will contain the knowledge base (the bank's FAQs).Example bank_faq.txt content:Plaintextq: How do I open a new account?
 a: You can open a new account online through our website or by visiting any branch location.
 
