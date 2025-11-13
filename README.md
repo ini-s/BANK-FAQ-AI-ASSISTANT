@@ -1,31 +1,40 @@
-This Python script creates a simple Bank FAQ AI Assistant using the Azure OpenAI Service. It loads Frequently Asked Questions (FAQs) from a local text file and uses an LLM (Language Model) to answer user questions based only on the provided FAQ context.
+## 🚀 AI Banking Assistant
 
-🚀 Bank FAQ AI Assistant README
-📝 Overview
+### 📝 Overview
 
-This script implements a command-line interface (CLI) chat assistant that uses the Azure OpenAI service to answer banking-related questions. The assistant is designed for Retrieval Augmented Generation (RAG), meaning it only uses the content of the local file, bank_faq.txt, as its knowledge base. If a user asks a question not covered in the FAQ content, the assistant will direct them to customer care.
+This Python script is a command-line chat assistant built on the **Azure OpenAI Service**. It acts as a comprehensive **Retrieval Augmented Generation (RAG)** system by merging and utilizing content from multiple local knowledge files: **FAQs, general bank policies, and loan policies.**
 
-⚙️ Prerequisites
-Python: Python 3.x must be installed.
+The assistant's primary goal is to provide accurate, banking-related answers strictly based on the provided local data.
 
-Dependencies: The required Python libraries are openai and python-dotenv.
+-----
 
-Azure OpenAI Service: You need an active Azure OpenAI Service instance, an API Key, and an Endpoint.
+### ✨ Key Features
 
-🛠️ SetupInstall Dependencies:Bashpip install openai python-dotenv
+  * **Multi-Source Knowledge Base:** Consolidates information from `faq.txt`, `bank_policy.txt`, and `loan_policy.txt`.
+  * **Persistent Merged File:** Creates and uses a `merged_bank_files.txt` to avoid reprocessing input files on every run.
+  * **Enhanced System Prompt:** Explicitly instructs the LLM to use the entire context for comprehensive answers and to reject non-banking-related queries.
+  * **Customer Care Fallback:** Directs users to customer care if the specific banking-related answer is not found in the combined context.
 
-Create Environment File:Create a file named .env in the same directory as the script to store your Azure credentials:Ini, TOML# .env file
-API_ENDPOINT="YOUR_AZURE_OPENAI_ENDPOINT_HERE"
-API_KEY="YOUR_AZURE_OPENAI_API_KEY_HERE"
+-----
 
-Replace the placeholders with your actual values.Create FAQ Data File:Create a file named bank_faq.txt in the same directory. This file will contain the knowledge base (the bank's FAQs).Example bank_faq.txt content:Plaintextq: How do I open a new account?
-a: You can open a new account online through our website or by visiting any branch location.
+### ⚙️ Prerequisites
 
-q: What are your working hours?
-a: Our branches are open Monday to Friday, 9 AM to 4 PM. Online banking is available 24/7.
+  * **Python:** Python 3.x must be installed.
+  * **Dependencies:** The required Python libraries are `openai` and `python-dotenv`.
+  * **Azure OpenAI Service:** You need an active Azure OpenAI Service instance, including an **API Key**, **Endpoint**, and a deployed chat model (like `gpt-4o-mini`).
 
-q: How can I reset my password?
-a: You can reset your password using the "Forgot Password" link on the login page of our online portal.
+-----
 
-(Ensure your data is structured clearly for the model to understand.)▶️ How to RunSave the provided code as a Python file (e.g., faq_assistant.py).Run the script from your terminal:Bashpython faq_assistant.py
-The assistant will start, and you can begin typing your questions.Type q or quit to exit the assistant.🔬 
+Here is the brief rewrite of the "How to Run" section, focusing on clear steps:
+
+-----
+
+### ▶️ How to Run
+
+1.  Start the assistant from your terminal.
+2.  Ask your questions at the prompt.
+4.  Type **`q`** (or `quit`/`exit`) to end the session.
+
+----- |
+| **System Prompt** | Directs the model to be a specialized banking assistant, restrict answers to the provided `<context>`, and handle off-topic or unanswerable banking questions gracefully. |
+| **RAG Prompt** | Sends the user's question along with the **entire merged content** to the Azure OpenAI model for context-aware generation. |
