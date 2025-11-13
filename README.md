@@ -25,16 +25,10 @@ The assistant's primary goal is to provide accurate, banking-related answers str
 
 -----
 
-Here is the brief rewrite of the "How to Run" section, focusing on clear steps:
-
------
-
 ### ▶️ How to Run
 
 1.  Start the assistant from your terminal.
 2.  Ask your questions at the prompt.
 4.  Type **`q`** (or `quit`/`exit`) to end the session.
 
------ |
-| **System Prompt** | Directs the model to be a specialized banking assistant, restrict answers to the provided `<context>`, and handle off-topic or unanswerable banking questions gracefully. |
-| **RAG Prompt** | Sends the user's question along with the **entire merged content** to the Azure OpenAI model for context-aware generation. |
+
