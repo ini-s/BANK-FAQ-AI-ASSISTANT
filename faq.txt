@@ -38,3 +38,23 @@ q: Can I use my Wema prepaid card outside the country?
 a: Yes. We have variants of Prepaid Card that can work abroad, for example, the Wema Travel Card.
 q: Can I get a prepaid card issued for a third-party?
 a: Yes, you can.
+q: Do I need to have an account with WEMA to have access to this school fee advanced facility?
+a: Yes, you do. Please download the ALAT Application to open an account or visit the nearest branch.
+q: What are the minimum and maximum facility amount I can access?
+a: The minimum amount loanable for this facility is N50,000 and the maximum amount is N3,000,000.
+q: What is the tenure for repayment of this facility?
+a: The repayment period is 12 months.
+q: What is the maximum number of children I can access this loan for?
+a: A Maximum of 4 children subject to DSR (Debt Service Ratio), please speak to your account officer for further directions.
+q: What collateral do I need for this loan?
+a: You do not need to provide a collateral for this facility.
+q: What is a device loan?
+a: It is an unsecured term loan facility designed to meet the financial needs of technology-driven individuals and it is available to every salary earner.
+q: What devices can I buy?
+a: You can purchase Laptops, Phones or Tablets with this facility.
+q: What are the minimum and maximum amount I can get?
+a: The minimum amount loanable is N50,000 and the maximum is N500,000.
+q: Do I need an account with the bank to access this facility?
+a: No, just download the ALAT application.
+q: Does the loan require collateral?
+a: No collateral is required.
