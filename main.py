@@ -1,24 +1,31 @@
-import json
 import os
 
 from openai import AzureOpenAI
 from dotenv import load_dotenv
+from utils import *
 
 load_dotenv()
 
 
-def load_data():
+def load_and_merge_files():
     try:
-        with open("bank_faq.txt", 'r') as file:
-            content = file.read()
-            return content
+        file_names = ["faq.txt", "bank_policy.txt", "loan_policy.txt"]
+        output_file = "merged_bank_files.txt"
+
+        if not os.path.exist(output_file):
+            with open(output_file, 'w', encoding="utf-8", newline="\n") as f:
+                for file in file_names:
+                    data = load_data(file)
+                    f.write(data)
+
+        merged_files = load_data("merged_bank_files.txt")
+        return merged_files
 
     except Exception as e:
         print(e)
-        return content
 
 
-def BANK_FAQ_AI_ASSISTANT():
+def BANK_AI_ASSISTANT():
     faq_assistant = AzureOpenAI(
         api_version="2024-12-01-preview",
         azure_endpoint=os.getenv("API_ENDPOINT"),
@@ -26,15 +33,13 @@ def BANK_FAQ_AI_ASSISTANT():
     )
 
     while True:
-
+        bank_data = load_and_merge_files()
         user_input = input("Ask a question (To quit, press 'q'): ")
-
-        content = load_data()
 
         prompt = f"""
                     {user_input}
                     <context>
-                    {content}
+                    {bank_data}
                     </context>
                 """
 
@@ -48,10 +53,12 @@ def BANK_FAQ_AI_ASSISTANT():
                     {
                         "role": "system",
                         "content": f"""
-                        You are a banking assistant and your job is to provide answers to frequently asked questions(FAQs).
-                        Focus on using only the questions and answers provided as q and a in the <context>.
-                        For questions not provided in the <context>, tell the user to contact customer care.
-                        For questions not related to the bank, tell that you can only answer questions related to the bank.
+                        You are a banking assistant and your job is to provide answers to customer(user) questions.
+                        You are to answer only banking related questions using only the information provided in <context>.
+                        For questions unrelated to the bank, tell the customer(user) that you can only respond to banking related questions.
+                        Questions and answers are provided in <context> as q for question and a for answer while other content in <context> will guide
+                        you to answer other customer(user) questions that are banking related.
+                        If the answer to a question asked is not provided in <context>, tell the user to contact customer care.
                         """,
                     },
 
@@ -71,4 +78,4 @@ def BANK_FAQ_AI_ASSISTANT():
 
 
 if __name__ == '__main__':
-    BANK_FAQ_AI_ASSISTANT()
+    BANK_AI_ASSISTANT()
