@@ -1,0 +1,40 @@
+q: What is ALAT?
+a: ALAT by Wema is Wema Bank’s fully Digital Banking Platform that allows you conduct all your banking transactions without ever having to visit any physical branch.
+q: Who can use ALAT?
+a: Everyone! you simply need to get registered on a smartphone. To operate your account, you may use your smartphone or revert to the *945# USSD banking.
+q: How much does it cost to get ALAT?
+a: ALAT is free to sign up on.
+q: Which mobile platforms are supported by the ALAT Application?
+a: The ALAT is currently supported on all IOS and Android devices.  Please visit your Google Play store or App Store to download the application.
+q: Can I create goals on ALAT?
+a: Yes, goals creation is allowed for all tier three savings and current account holders on ALAT.
+q: What is Fixed Term Loan?
+a: Fixed-term loan is an advance facility repayable in fixed monthly installments.
+q: I don't have a salary account with Wema bank, can I have access to a fixed-term loan?
+a: So sorry, you cannot have access to a fixed-term loan, kindly visit the nearest branch to open a salary account with Wema Bank.
+q: What is the maximum loan amount I can get?
+a: ALAT is free to sign up on.
+q: Which mobile platforms are supported by the ALAT Application?
+a: The Fixed-Term loan allows a loan at seven (7) multiples of your net monthly salary subject to a maximum of N2 million.
+q: What is the maximum loan tenure for a fixed-term loan?
+a: The maximum tenure for the fixed-term loan is 24 months.
+q: How long does the loan take to get disbursed into my account?
+a: You will receive a response on the approval/decline of your request within 72hrs.
+q: My card details got compromised, what do I do?
+a: Stop usage by immediately turning off master status on card control. If you wish to hotlist your debit card, please visit the ALAT Application or call contact centre on 08039003700.
+q: I got an email requesting my card details and pin, what do I do?
+a: Please do not respond, rather, report fraudsters to us through a different channel entirely.Kindly contact us via telephone on 07000PURPLE or 08039003700 or chat us on WhatsApp on 09044411010 and we would be happy to assi
+q: If my phone is stolen or my account has been hacked, what am I expected to do?
+a: Dial the emergency code *945*911# to deactivate your USSD profile or block your account.
+q: A fraudulent transaction occurred on my account, what can I do?
+a: Immediately visit the ALAT Application to change your login credentials i.e. password and PIN as well as your debit/credit card PIN. Should you encounter any difficulty, kindly chat us on WhatsApp on 09044411010 and we would be happy to assist, alternatively you can click on this link to log a complaint. https://purpleconnect.wemabank.com/support/tickets/new
+q: What can I do with my prepaid card?
+a: You can initiate transactions on all channels where the card variant is acceptable just like a debit card.
+q: What are the benefits of the Wema bank prepaid card?
+a: It helps to secure your fund. It helps with your financial plan. It helps to consummate easy checkout on web merchants as well as in-store. It is a flexible means of payment compared to cash.
+q: I am not a Wema bank customer; can I get a prepaid card?
+a: Yes, you can.
+q: Can I use my Wema prepaid card outside the country?
+a: Yes. We have variants of Prepaid Card that can work abroad, for example, the Wema Travel Card.
+q: Can I get a prepaid card issued for a third-party?
+a: Yes, you can.
