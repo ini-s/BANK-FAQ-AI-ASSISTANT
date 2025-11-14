@@ -8,21 +8,35 @@ load_dotenv()
 
 
 def load_and_merge_files():
-    try:
-        file_names = ["faq.txt", "bank_policy.txt", "loan_policy.txt"]
-        output_file = "merged_bank_files.txt"
+    file_names = ["faq.txt", "bank_policy.txt", "loan_policy.txt"]
+    output_file = "merged_bank_files.txt"
 
-        if not os.path.exist(output_file):
+    try:
+        if not os.path.exists(output_file):
             with open(output_file, 'w', encoding="utf-8", newline="\n") as f:
                 for file in file_names:
-                    data = load_data(file)
-                    f.write(data)
+                    try:
+                        data = load_data(file)
+                    except UnicodeDecodeError:
+                        # Retry reading with latin-1 if utf-8 fails
+                        with open(file, "r", encoding="latin-1") as alt_f:
+                            data = alt_f.read()
+                    except Exception as e:
+                        print(f"Error reading {file}: {e}")
+                        data = ""
 
-        merged_files = load_data("merged_bank_files.txt")
+                    if data is None:
+                        data = ""
+                    f.write(data)
+                    f.write("\n")
+
+        # Load merged file content
+        merged_files = load_data(output_file)
         return merged_files
 
     except Exception as e:
-        print(e)
+        print(f"Error merging files: {e}")
+        return ""
 
 
 def BANK_AI_ASSISTANT():
@@ -31,6 +45,9 @@ def BANK_AI_ASSISTANT():
         azure_endpoint=os.getenv("API_ENDPOINT"),
         api_key=os.getenv("API_KEY"),
     )
+
+    chat_history = []
+    history_limit = 4
 
     while True:
         bank_data = load_and_merge_files()
@@ -47,18 +64,19 @@ def BANK_AI_ASSISTANT():
             print("👋 Goodbye!")
             exit()
 
+        recent = chat_history[-history_limit:]
+        history_for_system = json.dumps(recent, ensure_ascii=False)
         try:
             response = faq_assistant.chat.completions.create(
                 messages=[
                     {
                         "role": "system",
                         "content": f"""
-                        You are a banking assistant and your job is to provide answers to customer(user) questions.
-                        You are to answer only banking related questions using only the information provided in <context>.
-                        For questions unrelated to the bank, tell the customer(user) that you can only respond to banking related questions.
-                        Questions and answers are provided in <context> as q for question and a for answer while other content in <context> will guide
-                        you to answer other customer(user) questions that are banking related.
-                        If the answer to a question asked is not provided in <context>, tell the user to contact customer care.
+                        You are a concise, helpful banking assistant. ALWAYS use only the information provided inside the <context> block to answer user questions.
+                        If the answer is NOT found in <context>, reply exactly with the single phrase: "The answer is not available in my current knowledge base. Please contact customer care for assistance." 
+                        When an answer is found, give a short (<=120 words) clear answer, include one short actionable step the user can take (if relevant), and finish with a one-sentence suggested follow-up question.
+                        Do NOT invent facts or provide information not present in <context>.
+                        Recent conversation history (most recent {len(recent)} turns):\n{history_for_system}
                         """,
                     },
 
@@ -71,10 +89,13 @@ def BANK_AI_ASSISTANT():
                 temperature=0,
             )
 
-            print(response.choices[0].message.content)
+            response = response.choices[0].message.content
+            chat_history.append({"role": "user", "content": user_input})
+            chat_history.append({"role": "assistant", "content": response})
+            print(response)
 
         except Exception as e:
-            print(e)
+            print(f"Error message: {e}")
 
 
 if __name__ == '__main__':
